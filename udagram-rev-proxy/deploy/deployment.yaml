@@ -2,32 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: reverseproxy
-  name: reverseproxy
+    service: ms-rev-proxy
+  name: ms-rev-proxy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: reverseproxy
+      app: ms-rev-proxy
   template:
     metadata:
       labels:
-        app: reverseproxy
-        service: reverseproxy
+        app: ms-rev-proxy
+        service: ms-rev-proxy
     spec:
       containers:
-      - image: iaguest/simple-reverse-proxy
-        name: reverseproxy
-        imagePullPolicy: Always          
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "1024Mi"
-            cpu: "500m"       
+      - image: iaguest/ms-rev-proxy
+        name: ms-rev-proxy
+        imagePullPolicy: Always                
         ports:
-        - containerPort: 8080
+        - containerPort: 8100
       restartPolicy: Always
 
 

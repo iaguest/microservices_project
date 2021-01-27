@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app-2
+  name: ms-feed-api
   labels:
-    app: my-app-2
+    app: ms-feed-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-app-2
+      app: ms-feed-api
   template:
     metadata:
       labels:
-        app: my-app-2
+        app: ms-feed-api
     spec:
       containers:
-      - name: simple-express
-        image: iaguest/simple-express
+      - name: ms-feed-api
+        image: iaguest/ms-feed-api
         ports:
         - containerPort: 8080
         livenessProbe:

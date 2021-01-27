@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app-2
+  name: ms-frontend
   labels:
-    app: my-app-2
+    app: ms-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-app-2
+      app: ms-frontend
   template:
     metadata:
       labels:
-        app: my-app-2
+        app: ms-frontend
     spec:
       containers:
-      - name: simple-express
-        image: iaguest/simple-express
+      - name: ms-frontend
+        image: iaguest/ms-frontend
         ports:
         - containerPort: 8080
         livenessProbe:
