@@ -17,6 +17,7 @@ spec:
       containers:
       - name: ms-frontend
         image: iaguest/ms-frontend
+        imagePullPolicy: Always  
         ports:
         - containerPort: 8080
         livenessProbe:

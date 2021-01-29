@@ -17,6 +17,7 @@ spec:
       containers:
       - name: ms-user-api
         image: iaguest/ms-user-api
+        imagePullPolicy: Always  
         ports:
         - containerPort: 8080
         livenessProbe:

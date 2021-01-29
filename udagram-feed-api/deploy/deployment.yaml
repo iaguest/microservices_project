@@ -17,6 +17,7 @@ spec:
       containers:
       - name: ms-feed-api
         image: iaguest/ms-feed-api
+        imagePullPolicy: Always  
         ports:
         - containerPort: 8080
         livenessProbe:
