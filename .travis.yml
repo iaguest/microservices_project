@@ -34,4 +34,7 @@ script:
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push iaguest/ms-user-api
+  - docker push iaguest/ms-feed-api
+  - docker push iaguest/ms-rev-proxy
+  - docker push iaguest/ms-frontend
   
