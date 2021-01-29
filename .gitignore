@@ -1,3 +1,4 @@
 .DS_Store
 
 set_env.sh
+env-configmap.yaml
