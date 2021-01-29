@@ -5,7 +5,7 @@ metadata:
   labels:
     app: ms-feed-api
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: ms-feed-api
