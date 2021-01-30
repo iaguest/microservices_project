@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     service: ms-rev-proxy
-  name: ms-rev-proxy-svc
+  name: ms-rev-proxy
 spec:
   ports:
   - name: "8080"

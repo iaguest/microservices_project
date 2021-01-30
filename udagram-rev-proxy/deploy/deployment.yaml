@@ -6,13 +6,9 @@ metadata:
     service: ms-rev-proxy
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: ms-rev-proxy
   template:
     metadata:
       labels:
-        app: ms-rev-proxy
         service: ms-rev-proxy
     spec:
       containers:
