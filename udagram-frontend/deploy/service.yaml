@@ -8,9 +8,9 @@ metadata:
   selfLink: /api/v1/namespaces/default/services/ms-frontend-svc
 spec:
   ports:
-  - port: 8080
+  - port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 8100
   selector:
     app: ms-frontend
   sessionAffinity: None

@@ -20,7 +20,7 @@ spec:
           name: ms-rev-proxy
           imagePullPolicy: Always                
           ports:
-          - containerPort: 8100
+          - containerPort: 8080
           env:
             - name: URL
               valueFrom:
