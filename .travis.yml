@@ -14,6 +14,7 @@ before_script:
   - echo "no tests"
 
 script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker --version  # print the version for logging
   # user api
   - docker build -t ms-user-api ./udagram-user-api
@@ -29,10 +30,7 @@ script:
   - docker tag ms-frontend iaguest/ms-frontend:latest
 
 # Tasks to perform after the process is successful.
-# Formatting the Docker username and password as below enables you
-#to programmatically log in without having the password exposed in logs.
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push iaguest/ms-user-api
   - docker push iaguest/ms-feed-api
   - docker push iaguest/ms-rev-proxy
