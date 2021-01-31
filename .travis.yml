@@ -38,4 +38,3 @@ after_success:
   - docker push iaguest/ms-rev-proxy
   - docker push iaguest/ms-frontend
   
-  
