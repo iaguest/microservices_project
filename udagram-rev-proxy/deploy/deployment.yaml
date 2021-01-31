@@ -8,7 +8,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-rev-proxy
+      service: ms-rev-proxy
   template:
     metadata:
       labels:
