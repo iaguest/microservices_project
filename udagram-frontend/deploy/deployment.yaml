@@ -20,12 +20,6 @@ spec:
           imagePullPolicy: Always  
           ports:
           - containerPort: 80
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 80
-            initialDelaySeconds: 300
-            periodSeconds: 30
           env:
             - name: URL
               valueFrom:
