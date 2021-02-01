@@ -1,0 +1,69 @@
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.100.0.1
+Port:              https  443/TCP
+TargetPort:        443/TCP
+Endpoints:         172.31.44.48:443,172.31.5.109:443
+Session Affinity:  None
+Events:            <none>
+
+
+Name:              ms-feed-api
+Namespace:         default
+Labels:            service=ms-feed-api
+Annotations:       <none>
+Selector:          service=ms-feed-api
+Type:              ClusterIP
+IP:                10.100.21.41
+Port:              8080  8080/TCP
+TargetPort:        8080/TCP
+Endpoints:         172.31.35.105:8080,172.31.6.192:8080
+Session Affinity:  None
+Events:            <none>
+
+
+Name:              ms-frontend
+Namespace:         default
+Labels:            service=ms-frontend
+Annotations:       <none>
+Selector:          service=ms-frontend
+Type:              ClusterIP
+IP:                10.100.67.149
+Port:              8100  8100/TCP
+TargetPort:        80/TCP
+Endpoints:         172.31.34.64:80
+Session Affinity:  None
+Events:            <none>
+
+
+Name:              ms-rev-proxy
+Namespace:         default
+Labels:            service=ms-rev-proxy
+Annotations:       <none>
+Selector:          service=ms-rev-proxy
+Type:              ClusterIP
+IP:                10.100.58.31
+Port:              8080  8080/TCP
+TargetPort:        8080/TCP
+Endpoints:         172.31.4.81:8080
+Session Affinity:  None
+Events:            <none>
+
+
+Name:              ms-user-api
+Namespace:         default
+Labels:            service=ms-user-api
+Annotations:       <none>
+Selector:          service=ms-user-api
+Type:              ClusterIP
+IP:                10.100.90.236
+Port:              8080  8080/TCP
+TargetPort:        8080/TCP
+Endpoints:         172.31.19.49:8080
+Session Affinity:  None
+Events:            <none>
