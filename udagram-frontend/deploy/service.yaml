@@ -2,15 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: ms-frontend
-  name: ms-frontend-svc
-  namespace: default
-  selfLink: /api/v1/namespaces/default/services/ms-frontend-svc
+    service: ms-frontend
+  name: ms-frontend
 spec:
   ports:
   - name: "8100"
     port: 8100
     targetPort: 80
   selector:
-    app: ms-frontend
+    service: ms-frontend
 

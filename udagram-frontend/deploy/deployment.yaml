@@ -1,77 +1,98 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-frontend
+  creationTimestamp: null
   labels:
-    app: ms-frontend
+    service: ms-frontend
+  name: ms-frontend
 spec:
+  progressDeadlineSeconds: 2147483647
   replicas: 1
+  revisionHistoryLimit: 2147483647
   selector:
     matchLabels:
-      app: ms-frontend
+      api: external
+      service: ms-frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        app: ms-frontend
+        api: external
+        service: ms-frontend
     spec:
       containers:
-        - name: ms-frontend
-          image: iaguest/ms-frontend
-          imagePullPolicy: Always  
-          ports:
-          - containerPort: 80
-          env:
-            - name: URL
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: URL
-            - name: AWS_BUCKET
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_BUCKET
-            - name: AWS_PROFILE
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_PROFILE
-            - name: AWS_REGION
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_REGION
-            - name: JWT_SECRET
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: JWT_SECRET
-            - name: POSTGRES_DB
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: POSTGRES_DB
-            - name: POSTGRES_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: POSTGRES_HOST
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: env-secret
-                  key: POSTGRES_PASSWORD
-            - name: POSTGRES_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: env-secret
-                  key: POSTGRES_USERNAME
-          volumeMounts:
-            - name: aws-secret
-              mountPath: "/root/.aws/"
-              readOnly: true
+      - env:
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              key: URL
+              name: env-config
+        - name: AWS_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_BUCKET
+              name: env-config
+        - name: AWS_PROFILE
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_PROFILE
+              name: env-config
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_REGION
+              name: env-config
+        - name: JWT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              key: JWT_SECRET
+              name: env-config
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_DB
+              name: env-config
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_HOST
+              name: env-config
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_PASSWORD
+              name: env-secret
+        - name: POSTGRES_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_USERNAME
+              name: env-secret
+        image: iaguest/ms-frontend
+        imagePullPolicy: Always
+        name: ms-frontend
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /root/.aws/
+          name: aws-secret
+          readOnly: true
+      dnsPolicy: ClusterFirst
       restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
       volumes:
-        - name: aws-secret
-          secret:
-            secretName: aws-secret
+      - name: aws-secret
+        secret:
+          defaultMode: 420
+          secretName: aws-secret
+status: {}

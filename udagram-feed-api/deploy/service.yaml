@@ -2,18 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: ms-feed-api
-  name: ms-feed-api-svc
-  namespace: default
-  selfLink: /api/v1/namespaces/default/services/ms-feed-api-svc
+    service: ms-feed-api
+  name: ms-feed-api
 spec:
   ports:
   - port: 8080
-    protocol: TCP
+    name: "8080"
     targetPort: 8080
   selector:
-    app: ms-feed-api
-  sessionAffinity: None
-  type: ClusterIP
-status:
-  loadBalancer: {}
+    service: ms-feed-api
