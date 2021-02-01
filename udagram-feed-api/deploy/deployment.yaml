@@ -74,12 +74,8 @@ spec:
         imagePullPolicy: Always
         name: ms-feed-api
         resources:
-          limits:
-            cpu: 500m
-            memory: 1Gi
           requests:
             cpu: 250m
-            memory: 64Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
