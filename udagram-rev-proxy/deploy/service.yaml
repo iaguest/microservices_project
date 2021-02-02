@@ -11,3 +11,6 @@ spec:
     targetPort: 8080
   selector:
     service: ms-rev-proxy
+  type: LoadBalancer
+status:
+  loadBalancer: {}
