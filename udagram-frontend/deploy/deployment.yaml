@@ -32,6 +32,11 @@ spec:
             configMapKeyRef:
               key: URL
               name: env-config
+        - name: API_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: API_HOST
+              name: env-config
         - name: AWS_BUCKET
           valueFrom:
             configMapKeyRef:
