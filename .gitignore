@@ -1,6 +1,6 @@
 .DS_Store
 
 set_env.sh
-env-configmap.yaml
+env-config*.yaml
 aws-secret.yaml
 env-secret.yaml
