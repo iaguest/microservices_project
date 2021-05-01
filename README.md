@@ -6,6 +6,13 @@ The project is split into two parts:
 1. Frontend - Angular web application built with Ionic Framework
 2. Backend RESTful API - Node-Express application
 
+## Aim
+Now that we have learned about monolith applications and microservices, let's do it ourselves! For this project, we will be taking an existing monolith application and deploying it as microservices in Kubernetes on AWS.
+
+ * Refactor the monolith application to microservices
+ * Set up each microservice to be run in its own Docker container
+ * Set up a CI/CD pipeline to deploy the containers to Kubernetes
+
 ## Getting Started
 > _tip_: it's recommended that you start with getting the backend API running since the frontend web application depends on the API.
 
